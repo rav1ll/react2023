@@ -1,8 +1,2 @@
-
-## screencasts
-
-
-task with button counter: https://drive.google.com/file/d/1b5hdbJKwIdCsnhJEwBu6H9ZoOcz16NyJ/view?usp=sharing
-
-task with forms: https://drive.google.com/file/d/1_zWmescu28zj1IBTpgW0rLxFK4AQ2cHz/view?usp=sharing
+**screencast with navigation:** https://drive.google.com/file/d/1zESEUz24biMsqoFv21c9dNMd_zs9tf6t/view?usp=sharing
 
