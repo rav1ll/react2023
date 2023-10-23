@@ -11,6 +11,10 @@ const HomeScreen = ({navigation}) => {
                 onPress={() => navigation.navigate('About')}
             />
 
+            <Button
+                title="navigate to tasks "
+                onPress={() => navigation.navigate('Tasks')}
+            />
         </View>
     );
 }
@@ -20,8 +24,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        gap: 20,
         backgroundColor:
             '#758eff',
+
 
     },
     header: {

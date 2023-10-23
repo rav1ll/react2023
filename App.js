@@ -4,7 +4,7 @@ import {Button, StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList, S
 import * as React from 'react';
 import AboutScreen from './screens/AboutScreen';
 import HomeScreen from './screens/HomeScreen';
-
+import TaskScreen from './screens/TaskScreen';
 
 import {NavigationContainer} from '@react-navigation/native' ;
 import {createNativeStackNavigator} from '@react-navigation/native-stack' ;
@@ -18,6 +18,7 @@ const App = () => {
             <Stack.Navigator>
                 <Stack.Screen name={'Home'} component={HomeScreen}/>
                 <Stack.Screen name={'About'} component={AboutScreen}/>
+                <Stack.Screen name={'Tasks'} component={TaskScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
