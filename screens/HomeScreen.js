@@ -59,10 +59,7 @@ const HomeScreen = ({ navigation }) => {
                 )}
             />
 
-            <Button
-                title="Завершенные задачи"
-                onPress={() => navigation.navigate('CompletedTasks', { completedTodos })}
-            />
+
         </View>
     );
 };
