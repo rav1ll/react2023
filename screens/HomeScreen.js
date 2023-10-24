@@ -12,13 +12,6 @@ const HomeScreen = ({ navigation }) => {
     const [todos, setTodos] = useState([]);
     const [completedTodos, setCompletedTodos] = useState([]);
 
-    useEffect(() => {
-        getTodos();
-    }, []);
-
-    const getTodos = async () => {
-
-    };
 
     const addTodo = () => {
         if (text) {
