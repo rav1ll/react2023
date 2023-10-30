@@ -4,11 +4,9 @@ import {View, Text, Button, StyleSheet} from 'react-native';
 const AboutScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>About screen</Text>
-            <Button
-                title="Return to main screen"
-                onPress={() => navigation.navigate('Home')}
-            />
+            <Text style={styles.header}>About this app</Text>
+
+            <Text style={styles.text}>this is edu project based on react native. 2023</Text>
         </View>
     );
 }
@@ -21,6 +19,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor:
             '#758eff',
+
+
+    },
+    text: {
+
+        color: 'white',
+        marginTop: 100,
+        fontSize: 12
 
 
     },

@@ -5,10 +5,7 @@ const TaskScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Task screen</Text>
-            <Button
-                title="Return to main screen"
-                onPress={() => navigation.navigate('Home')}
-            />
+
         </View>
     );
 }
