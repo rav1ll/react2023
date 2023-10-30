@@ -1,134 +1,31 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, TextInput} from 'react-native';
+import {StatusBar} from 'expo-status-bar';
 
-export default function App() {
+import {Button, StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList, SafeAreaView} from 'react-native';
+import * as React from 'react';
+import AboutScreen from './screens/AboutScreen';
+import HomeScreen from './screens/HomeScreen';
+import TaskScreen from './screens/TaskScreen';
+
+import {NavigationContainer} from '@react-navigation/native' ;
+import {createNativeStackNavigator} from '@react-navigation/native-stack' ;
+
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
     return (
-
-            <InputViews/>
-
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name={'Home'} component={HomeScreen}/>
+                <Stack.Screen name={'About'} component={AboutScreen}/>
+                <Stack.Screen name={'Tasks'} component={TaskScreen}/>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
+
+
 };
-
-function InputViews() {
-    const [name, setName] = useState('');
-    const [displayName, setDisplayName] = useState(' ');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    const handleLogin = () => {
-        if (username === 'rav' &&
-            password === '12345678') {
-
-            setIsLoggedIn(true);
-            setError('');
-
-            setUsername('');
-            setPassword('')
-        } else {
-            setError('Try again');
-        }
-    };
-
-    const handleLogout = () => {
-        if (isLoggedIn == true)
-        {
-            setIsLoggedIn(false)
-        };
-    };
-
-
-
-    const handleSetUsername = (text) => {
-        setUsername(text);
-    };
-
-    const handleSetName = (text) => {
-        setName(text);
-    };
-
-    const handleSetPassword = (text) => {
-        setPassword(text);
-    };
-
-    const handleDisplayName = () => {
-        setDisplayName(name);
-    };
-
-    return (
-        <View style={styles.container}>
-
-
-
-            <View style={[styles.head,  ]}>
-                <Text style={{color: 'black', fontSize: 20}}>Your Name: {displayName}</Text>
-            </View>
-            <View style={[styles.content,  ]}>
-
-
-
-                <TextInput
-                    style={[styles.input, {marginTop: 10}]}
-                    placeholder="Enter your name"
-                    onChangeText={handleSetName}
-                    value={name}
-                />
-
-                <TouchableOpacity style={[styles.button, {marginTop: 10}]}
-                                  onPress={handleDisplayName}>
-                    <Text style={styles.appButtonText}> Change name </Text>
-                </TouchableOpacity>
-
-            </View>
-
-            <View style={[styles.content, {marginTop: 10}]}>
-
-                {error ? <Text style={{color: 'red'}}>{error}</Text> :
-                    <Text>{isLoggedIn ? 'user ' : 'enter your data'}</Text>}
-
-                {!isLoggedIn ?
-
-                    <View style={styles.content}>
-
-                        <TextInput
-                            style={[styles.input, {marginTop: 15}]}
-                            placeholder="Enter username"
-                            onChangeText={handleSetUsername}
-                            value={username}
-                        />
-                        <TextInput
-                            style={[styles.input, {marginTop: 15}]}
-                            placeholder="Enter password"
-                            onChangeText={handleSetPassword}
-                            value={password}
-                            secureTextEntry={true}
-                        />
-
-                        <TouchableOpacity style={[styles.button, {marginTop: 10}]}
-                                          onPress={handleLogin}>
-                            <Text style={styles.appButtonText}>Login</Text>
-                        </TouchableOpacity>
-
-                    </View>
-
-                    :
-
-                    <View style={styles.content}>
-
-
-                        <TouchableOpacity style={[styles.button, {marginTop: 10}]}
-                                          onPress={handleLogout}>
-                            <Text style={styles.appButtonText}>Log out</Text>
-                        </TouchableOpacity>
-
-                    </View>}
-
-
-            </View>
-        </View>
-    );
-}
+export default App;
 
 const styles = StyleSheet.create({
     input: {
@@ -177,3 +74,4 @@ const styles = StyleSheet.create({
     }
     ,
 })
+
