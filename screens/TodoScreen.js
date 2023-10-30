@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { IconButton } from 'react-native-paper';
 
 
-const HomeScreen = ({ navigation }) => {
+const TodoScreen = ({ navigation }) => {
     const [text, setText] = useState('');
     const [todos, setTodos] = useState([]);
     const [completedTodos, setCompletedTodos] = useState([]);
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default HomeScreen;
+export default TodoScreen;
