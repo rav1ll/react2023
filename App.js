@@ -1,29 +1,37 @@
-import {StatusBar} from 'expo-status-bar';
+
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import {Button, StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList, SafeAreaView} from 'react-native';
 import * as React from 'react';
 import AboutScreen from './screens/AboutScreen';
 import TodoScreen from './screens/TodoScreen';
 import TaskScreen from './screens/TaskScreen';
+import PostRequestScreen from './screens/PostRequestScreen';
 import RequestScreen from './screens/RequestScreen';
 import HomeScreen from './screens/HomeScreen';
 import {NavigationContainer} from '@react-navigation/native' ;
 import {createNativeStackNavigator} from '@react-navigation/native-stack' ;
 
 
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name={'Home'} component={HomeScreen}/>
-                <Stack.Screen name={'About'} component={AboutScreen}/>
-                <Stack.Screen name={'Tasks'} component={TaskScreen}/>
-                <Stack.Screen name={'Requests'} component={RequestScreen}/>
-                <Stack.Screen name={'Todo'} component={TodoScreen}/>
-            </Stack.Navigator>
-        </NavigationContainer>
+
+        <GestureHandlerRootView style={{flex: 1}}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name={'Home'} component={HomeScreen}/>
+                    <Stack.Screen name={'About'} component={AboutScreen}/>
+                    <Stack.Screen name={'Tasks'} component={TaskScreen}/>
+                    <Stack.Screen name={'Requests'} component={RequestScreen}/>
+                    <Stack.Screen name={'Todo'} component={TodoScreen}/>
+                    {/*<Stack.Screen name={'Post'} component={PostRequestScreen}/>*/}
+
+                </Stack.Navigator>
+            </NavigationContainer>
+        </GestureHandlerRootView>
     );
 
 

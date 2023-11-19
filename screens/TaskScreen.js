@@ -1,35 +1,103 @@
-import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import React, {useEffect, useRef} from 'react';
+import {Modal, View, Text, Button, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
+import {Modalize} from "react-native-modalize";
+import {Alert} from 'react-native';
+import {useState} from 'react';
+import {TextInput} from 'react-native';
 
-const TaskScreen = ({navigation}) => {
+const TaskScreen = () => {
+    const [tasks, setTasks] = useState([]);
+    const [newTask, setNewTask] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
+    const handleDeleteTask = (index) => {
+        const updatedTasks = tasks.filter((task, i) => i !== index);
+        setTasks(updatedTasks);
+    }
+    const addTask = () => {
+        if (newTask) {
+            setTasks([...tasks, newTask]);
+            setNewTask('');
+        }
+    }
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.header}>Task screen</Text>
+        <View style={{flex: 1, padding: 20, backgroundColor: '#071825'}}>
+            <TextInput
+                value={newTask}
+                onChangeText={text => setNewTask(text)}
+                placeholder="Enter a new task"
+                style={styles.textinput}
+            />
+
+            <Button title="add new task" onPress={addTask}/>
+
+            <ScrollView style={styles.header}>
+                {tasks.map((task, index) => (
+                    <View key={index} style={styles.container}>
+                        <Text style={styles.tasktext}> Task {index} : {task}</Text>
+
+                        <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.deletebutton}>
+                            <Text style={{color: '#ffffff', textShadowRadius: 11}}>Delete</Text>
+                        </TouchableOpacity>
+                        <Modal
+                            visible={modalVisible}
+                            animationType="slide"
+                            transparent={true}
+                        >
+                            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                                <View style={{backgroundColor: 'white', padding: 20, gap: 10}}>
+                                    <Text style={{color: 'black', margin: 10, fontSize: 20}}> Delete item?</Text>
+                                    <Button title="Close" onPress={() => setModalVisible(false)}/>
+                                    <Button title="Delete" onPress={() => {
+                                        handleDeleteTask(index);
+                                        setModalVisible(false)
+                                    }}/>
+                                </View>
+                            </View>
+                        </Modal>
+                    </View>
+                ))}
+            </ScrollView>
 
         </View>
     );
 }
 
-
-
+export default TaskScreen;
 
 
 const styles = StyleSheet.create({
+    tasktext: {
+        fontSize: 16,
+        color: 'white',
+        marginBottom: 5,
+        textAlign: 'left',
+        paddingLeft: 10
+    },
+    deletebutton: {backgroundColor: '#ff9000', borderColor: '#ff9000', borderWidth: 9, borderRadius: 10},
     container: {
-
-        flex: 1,
+        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        marginTop: 15,
+        flexWrap: "wrap",
         backgroundColor:
-            '#8d30ff',
+            '#3078ff',
+        color: 'white',
+        fontSize: 20, padding: 10, borderRadius: 8,
 
+        justifyContent: 'space-between'
+    },
+    textinput: {
+        borderWidth: 1,
+        padding: 10,
+        marginBottom: 10,
+        color: 'black',
+        backgroundColor: '#e8e8e8'
     },
     header: {
         fontSize: 34,
-        alignItems: 'center',
         marginBottom: 20,
         color: 'white',
     },
 });
 
-export default TaskScreen;

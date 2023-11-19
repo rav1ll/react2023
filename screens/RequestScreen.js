@@ -10,7 +10,7 @@ const RequestScreen = () => {
             const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
                 params: {
                     q: city,
-                    appid: 'здесь надо вписать свой api'
+                    appid: 'dfee0a2b4a7aa9f2f5975efb48baf115'
                 }
             });
             setWeatherData(response.data);
