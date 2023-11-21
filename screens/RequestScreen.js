@@ -2,15 +2,18 @@ import {Button, StyleSheet, Text, TextInput, View} from "react-native";
 import React, {useState} from "react";
 import axios from "axios";
 
+import API_TOKEN from "../conf.js"
+
 const RequestScreen = () => {
     const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
+    const token = API_TOKEN;
     const fetchData = async () => {
         try {
             const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
                 params: {
                     q: city,
-                    appid: ''
+                    appid: token
                 }
             });
             setWeatherData(response.data);
