@@ -11,6 +11,8 @@ import RequestScreen from './screens/RequestScreen';
 import HomeScreen from './screens/HomeScreen';
 import {NavigationContainer} from '@react-navigation/native' ;
 import {createNativeStackNavigator} from '@react-navigation/native-stack' ;
+import {DeepLinking} from "./navigation/DeepLinking";
+import Navigation from "./base/Navigation";
 
 
 
@@ -20,7 +22,7 @@ const App = () => {
     return (
 
         <GestureHandlerRootView style={{flex: 1}}>
-            <NavigationContainer>
+            <NavigationContainer linking={DeepLinking.linking} ref={Navigation.navigationRef}>
                 <Stack.Navigator>
                     <Stack.Screen name={'Home'} component={HomeScreen}/>
                     <Stack.Screen name={'About'} component={AboutScreen}/>
