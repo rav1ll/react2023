@@ -1,9 +1,10 @@
-import {Button, StyleSheet, Text, TextInput, View} from "react-native";
+import {Button, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import axios from "axios";
 
 import API_TOKEN from "../conf.js"
 import {useTranslation} from "react-i18next";
+import {Icon} from "../components/icons/Icon";
 
 const RequestScreen = () => {
     const {t} = useTranslation();
@@ -43,8 +44,10 @@ const RequestScreen = () => {
                 />
             </View>
 
-
-            <Button title="Загрузить данные" onPress={fetchData}/>
+            <TouchableOpacity style={styles.custom_button}>
+            <Button title="Загрузить данные" onPress={fetchData} color={'#5c74ff'}/>
+            <Icon name={'ic_fluent_send_20_regular'} size={24} color={'white'}/>
+            </TouchableOpacity>
 
             {weatherData && (
                 <View style={styles.weather_container}>
@@ -93,5 +96,17 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor:
             '#ffffff'
-    }
+    },
+    custom_button:
+        {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 8,
+            backgroundColor: '#5c74ff',
+            padding: 10,
+            width: '100%',
+            fontFamily: 'Manrope',
+            gap: 13
+        },
 });

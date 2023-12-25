@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Button, StyleSheet, TouchableOpacity} from 'react-native';
 import {Icon} from '../components/icons/Icon' ;
 
 
@@ -13,7 +13,7 @@ const HomeScreen = ({navigation}) => {
                     title="Todo"
                     onPress={() => navigation.navigate('Todo')}
                 />
-                <Icon name={'ic_fluent_umbrella_20_regular'} size={24} color={'white'}/>
+                <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.custom_button}>
@@ -21,7 +21,7 @@ const HomeScreen = ({navigation}) => {
                     title="Requests"
                     onPress={() => navigation.navigate('Requests')}
                 />
-                <Icon name={'ic_fluent_umbrella_20_filled'} size={24} color={'white'}/>
+                <Icon name={'ic_fluent_umbrella_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.custom_button}>
@@ -29,6 +29,7 @@ const HomeScreen = ({navigation}) => {
                     title="Tasks"
                     onPress={() => navigation.navigate('Tasks')}
                 />
+                <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.custom_button}>
@@ -38,7 +39,7 @@ const HomeScreen = ({navigation}) => {
                     onPress={() => navigation.navigate('About')}
 
                 />
-                <Icon name={'ic_fluent_umbrella_20_filled'} size={24} color={'white'}/>
+                <Icon name={'ic_fluent_info_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
         </View>
@@ -68,7 +69,8 @@ const styles = StyleSheet.create({
             backgroundColor: '#5c74ff',
             padding: 10,
             width: 150,
-            fontFamily: 'Manrope'
+            fontFamily: 'Manrope',
+            gap: 13
         },
     header: {
         fontSize: 34,
