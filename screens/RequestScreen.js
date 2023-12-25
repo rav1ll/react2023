@@ -3,8 +3,13 @@ import React, {useState} from "react";
 import axios from "axios";
 
 import API_TOKEN from "../conf.js"
+import {useTranslation} from "react-i18next";
 
 const RequestScreen = () => {
+    const {t} = useTranslation();
+
+
+
     const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const token = API_TOKEN;
@@ -27,6 +32,7 @@ const RequestScreen = () => {
     return (
         <View style={{backgroundColor: '#0c0d1e'}}>
             <View style={styles.header}>
+
                 <Text style={{color: "white", margin: 10}}> В поле ниже необходимо ввести название города, для которого
                     нужно узнать погоду, например, Moscow</Text>
                 <TextInput
@@ -39,6 +45,7 @@ const RequestScreen = () => {
 
 
             <Button title="Загрузить данные" onPress={fetchData}/>
+
             {weatherData && (
                 <View style={styles.weather_container}>
                     <Text style={{color: "#f59c44"}}>Город: {weatherData.name}</Text>

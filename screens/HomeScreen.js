@@ -1,54 +1,81 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
+import {Icon} from '../components/icons/Icon' ;
+
 
 const HomeScreen = ({navigation}) => {
     return (
 
 
-
         <View style={styles.container}>
+            <TouchableOpacity style={styles.custom_button}>
+                <Button
+                    title="Todo"
+                    onPress={() => navigation.navigate('Todo')}
+                />
+                <Icon name={'ic_fluent_umbrella_20_regular'} size={24} color={'white'}/>
+            </TouchableOpacity>
 
-            <Button
-                title="Todo"
-                onPress={() => navigation.navigate('Todo')}
-            />
+            <TouchableOpacity style={styles.custom_button}>
+                <Button
+                    title="Requests"
+                    onPress={() => navigation.navigate('Requests')}
+                />
+                <Icon name={'ic_fluent_umbrella_20_filled'} size={24} color={'white'}/>
+            </TouchableOpacity>
 
-            <Button
-                title="Requests"
-                onPress={() => navigation.navigate('Requests')}
-            />
-            <Button
-                title="Tasks"
-                onPress={() => navigation.navigate('Tasks')}
-            />
-            <Button
-                title="About"
-                onPress={() => navigation.navigate('About')}
-            />
+            <TouchableOpacity style={styles.custom_button}>
+                <Button
+                    title="Tasks"
+                    onPress={() => navigation.navigate('Tasks')}
+                />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.custom_button}>
+                <Button
+                    title="About"
+
+                    onPress={() => navigation.navigate('About')}
+
+                />
+                <Icon name={'ic_fluent_umbrella_20_filled'} size={24} color={'white'}/>
+            </TouchableOpacity>
 
         </View>
     );
 }
 
 
-
-
-
 const styles = StyleSheet.create({
-    container: {
+    container:
+        {
 
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor:
-            '#8d30ff',
-        gap: 10
-    },
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor:
+                '#8d30ff',
+            gap: 10,
+            fontFamily: 'manrope_bold',
+            fontWeight: 900
+        },
+    custom_button:
+        {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 8,
+            backgroundColor: '#5c74ff',
+            padding: 10,
+            width: 150,
+            fontFamily: 'Manrope'
+        },
     header: {
         fontSize: 34,
         alignItems: 'center',
         marginBottom: 20,
-
+        fontFamily: 'Manrope',
+        fontWeight: '100'
     },
 });
 
