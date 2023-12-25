@@ -1,10 +1,16 @@
-import {Button, StyleSheet, Text, TextInput, View} from "react-native";
+import {Button, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import axios from "axios";
 
 import API_TOKEN from "../conf.js"
+import {useTranslation} from "react-i18next";
+import {Icon} from "../components/icons/Icon";
 
 const RequestScreen = () => {
+    const {t} = useTranslation();
+
+
+
     const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const token = API_TOKEN;
@@ -27,6 +33,7 @@ const RequestScreen = () => {
     return (
         <View style={{backgroundColor: '#0c0d1e'}}>
             <View style={styles.header}>
+
                 <Text style={{color: "white", margin: 10}}> В поле ниже необходимо ввести название города, для которого
                     нужно узнать погоду, например, Moscow</Text>
                 <TextInput
@@ -37,8 +44,11 @@ const RequestScreen = () => {
                 />
             </View>
 
+            <TouchableOpacity style={styles.custom_button}>
+            <Button title="Загрузить данные" onPress={fetchData} color={'#5c74ff'}/>
+            <Icon name={'ic_fluent_send_20_regular'} size={24} color={'white'}/>
+            </TouchableOpacity>
 
-            <Button title="Загрузить данные" onPress={fetchData}/>
             {weatherData && (
                 <View style={styles.weather_container}>
                     <Text style={{color: "#f59c44"}}>Город: {weatherData.name}</Text>
@@ -86,5 +96,17 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor:
             '#ffffff'
-    }
+    },
+    custom_button:
+        {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 8,
+            backgroundColor: '#5c74ff',
+            padding: 10,
+            width: '100%',
+            fontFamily: 'Manrope',
+            gap: 13
+        },
 });
