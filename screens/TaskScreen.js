@@ -4,20 +4,40 @@ import {Modalize} from "react-native-modalize";
 import {Alert} from 'react-native';
 import {useState} from 'react';
 import {TextInput} from 'react-native';
+import LogStore from '../LogStore';
+
 
 const TaskScreen = () => {
+
+
+
+
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
+
+    useEffect(() => {
+        const loadTasks = async () => {
+            const tasks = await LogStore.getTasks();
+            setTasks(tasks);
+        };
+        loadTasks();
+    }, []);
+
+
+
+
     const handleDeleteTask = (index) => {
         const updatedTasks = tasks.filter((task, i) => i !== index);
         setTasks(updatedTasks);
-    }
+        LogStore.deleteTasks(index); // удаляем задачу из logstore
+    };
     const addTask = () => {
-        if (newTask) {
-            setTasks([...tasks, newTask]);
-            setNewTask('');
-        }
+        const updatedTasks = [...tasks, newTask];
+        setTasks(updatedTasks);
+        setNewTask('');
+        LogStore.saveTasks(updatedTasks); // сохраняем задачи в logstore
+
     }
 
     return (
@@ -32,9 +52,9 @@ const TaskScreen = () => {
             <Button title="add new task" onPress={addTask}/>
 
             <ScrollView style={styles.header}>
-                {tasks.map((task, index) => (
+                {tasks.map((task, index) =>(
                     <View key={index} style={styles.container}>
-                        <Text style={styles.tasktext}> Task {index} : {task}</Text>
+                        <Text style={styles.tasktext}>Task {index}: {task}</Text>
 
                         <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.deletebutton}>
                             <Text style={{color: '#ffffff', textShadowRadius: 11}}>Delete</Text>
