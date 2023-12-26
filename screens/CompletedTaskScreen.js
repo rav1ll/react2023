@@ -1,14 +1,13 @@
 import React, {useEffect} from 'react';
 import {Modal, View, Text, Button, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
+
 import {useState} from 'react';
-import {TextInput} from 'react-native';
+
 import LogStore from '../repository/LogStore';
 
 
-
-const TaskScreen = () => {
+const CompletedTaskScreen = () => {
     const [tasks, setTasks] = useState([]);
-    const [newTask, setNewTask] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
 
     useEffect(() => {
@@ -24,7 +23,6 @@ const TaskScreen = () => {
         setTasks(updatedTasks);
         LogStore.deleteTasks(index);
     };
-
     const handleToggleComplete = (index) => {
         const updatedTasks = [...tasks];
         updatedTasks[index].completed = !updatedTasks[index].completed;
@@ -32,39 +30,24 @@ const TaskScreen = () => {
         LogStore.saveTasks(updatedTasks);
     };
 
-    const addTask = () => {
-        const updatedTasks = [...tasks, {text: newTask, completed: false}];
-        setTasks(updatedTasks);
-        setNewTask('');
-        LogStore.saveTasks(updatedTasks);
-    };
+
 
     return (
+        <View style={{ flex: 1, padding: 20, backgroundColor: '#071825' }}>
 
-
-        <View style={{flex: 1, padding: 20, backgroundColor: '#071825'}}>
-
-            <TextInput
-                value={newTask}
-                onChangeText={text => setNewTask(text)}
-                placeholder="Enter a new task"
-                style={styles.textinput}
-            />
-
-            <Button title="add new task" onPress={addTask}/>
 
 
             <ScrollView style={styles.header}>
-                {tasks.map((task, index) => (
+                {tasks.filter(task => task.completed).map((task, index) => (
                     <View key={index} style={[styles.container]}>
                         <Text style={styles.tasktext}>Task {index}: {task.text}</Text>
 
 
                         <View style={[styles.buttons, task.completed && styles.completed]}>
+
                             <TouchableOpacity onPress={() => handleToggleComplete(index)} style={styles.completebutton}>
                                 <Text style={styles.comptext}>{task.completed ? 'Undo' : 'Complete'}</Text>
                             </TouchableOpacity>
-
                             <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.deletebutton}>
                                 <Text style={styles.comptext}>Delete task</Text>
                             </TouchableOpacity>
@@ -76,14 +59,14 @@ const TaskScreen = () => {
                             animationType="slide"
                             transparent={true}
                         >
-                            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                                <View style={{backgroundColor: 'white', padding: 20, gap: 10}}>
-                                    <Text style={{color: 'black', margin: 10, fontSize: 20}}> Delete item?</Text>
-                                    <Button title="Close" onPress={() => setModalVisible(false)}/>
+                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                <View style={{ backgroundColor: 'white', padding: 20, gap: 10 }}>
+                                    <Text style={{ color: 'black', margin: 10, fontSize: 20 }}> Delete item?</Text>
+                                    <Button title="Close" onPress={() => setModalVisible(false)} />
                                     <Button title="Delete" onPress={() => {
                                         handleDeleteTask(index);
                                         setModalVisible(false);
-                                    }}/>
+                                    }} />
                                 </View>
                             </View>
                         </Modal>
@@ -95,7 +78,7 @@ const TaskScreen = () => {
     );
 };
 
-export default TaskScreen;
+export default CompletedTaskScreen;
 
 
 const styles = StyleSheet.create({
@@ -106,7 +89,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         paddingLeft: 10
     },
-    nav_button: {height: 333,},
+
     container: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -119,7 +102,7 @@ const styles = StyleSheet.create({
 
         justifyContent: 'space-between'
     },
-    buttons: {flexDirection: 'column', alignItems: 'flex-start', gap: 3},
+    buttons:{ flexDirection: 'column', alignItems: 'flex-start', gap: 3},
     textinput: {
         borderWidth: 1,
         padding: 10,
@@ -145,15 +128,14 @@ const styles = StyleSheet.create({
             backgroundColor: '#ff9000',
             borderColor: '#ff9000',
             borderWidth: 9,
-            borderRadius: 10
-        },
+            borderRadius: 10},
     completed: {
         backgroundColor: '#57ff8b',
         borderColor: '#57ff8b',
-        borderWidth: 3,
+        borderWidth: 10,
         borderRadius: 10,
 
     },
-    comptext: {color: '#ffffff', textShadowRadius: 11}
+    comptext:{ color: '#ffffff', textShadowRadius: 11 }
 });
 
