@@ -1,3 +1,4 @@
-**todo log storage** 
+**todo with completed status**
 
-https://drive.google.com/file/d/1XeJ5rwRhnTUD06DyynCtN5G1qk1b_9c-/view?usp=sharing
+
+https://drive.google.com/file/d/1Gi4aClZgUlbMs8OGqJqAEXaFt3EgohNj/view?usp=sharing
