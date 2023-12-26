@@ -8,13 +8,7 @@ const HomeScreen = ({navigation}) => {
 
 
         <View style={styles.container}>
-            <TouchableOpacity style={styles.custom_button}>
-                <Button
-                    title="Todo"
-                    onPress={() => navigation.navigate('Todo')}
-                />
-                <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>
-            </TouchableOpacity>
+
 
             <TouchableOpacity style={styles.custom_button}>
                 <Button
