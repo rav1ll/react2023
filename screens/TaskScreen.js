@@ -10,8 +10,6 @@ import LogStore from '../LogStore';
 const TaskScreen = () => {
 
 
-
-
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
@@ -23,8 +21,6 @@ const TaskScreen = () => {
         };
         loadTasks();
     }, []);
-
-
 
 
     const handleDeleteTask = (index) => {
@@ -52,7 +48,7 @@ const TaskScreen = () => {
             <Button title="add new task" onPress={addTask}/>
 
             <ScrollView style={styles.header}>
-                {tasks.map((task, index) =>(
+                {tasks.map((task, index) => (
                     <View key={index} style={styles.container}>
                         <Text style={styles.tasktext}>Task {index}: {task}</Text>
 

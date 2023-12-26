@@ -13,22 +13,16 @@ const AboutScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor:
-            '#758eff',
-
-
+            '#071825',
     },
     text: {
-
         color: 'white',
         marginTop: 100,
         fontSize: 12
-
-
     },
     header: {
         fontSize: 34,

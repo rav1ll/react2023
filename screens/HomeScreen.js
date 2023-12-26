@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor:
-                '#8d30ff',
+                '#071825',
             gap: 10,
             fontFamily: 'manrope_bold',
             fontWeight: 900
