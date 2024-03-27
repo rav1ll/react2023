@@ -10,18 +10,24 @@ const HomeScreen = ({navigation}) => {
         <View style={styles.container}>
 
 
-            <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Requests')}>
-                <Text style={styles.header}>Weather Requests</Text>
-                <Icon name={'ic_fluent_umbrella_20_regular'} size={24} color={'white'}/>
+            {/*<TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Requests')}>*/}
+            {/*    <Text style={styles.header}>Weather Requests</Text>*/}
+            {/*    <Icon name={'ic_fluent_umbrella_20_regular'} size={24} color={'white'}/>*/}
+            {/*</TouchableOpacity>*/}
+
+            {/*<TouchableOpacity title="Tasks" style={styles.custom_button} onPress={() => navigation.navigate('Tasks')}>*/}
+            {/*    <Text style={styles.header}>Tasks</Text>*/}
+            {/*    <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>*/}
+            {/*</TouchableOpacity>*/}
+
+            <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Words')}>
+                <Text style={styles.header}>Words</Text>
+                <Icon name={'ic_fluent_info_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
-            <TouchableOpacity title="Tasks" style={styles.custom_button} onPress={() => navigation.navigate('Tasks')}>
-                <Text style={styles.header}>Tasks</Text>
-                <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>
-            </TouchableOpacity>
 
             <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Completed Tasks')}>
-                <Text style={styles.header}>Completed Tasks</Text>
+                <Text style={styles.header}>Completed Words</Text>
                 <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
@@ -29,6 +35,8 @@ const HomeScreen = ({navigation}) => {
                 <Text style={styles.header}>About</Text>
                 <Icon name={'ic_fluent_info_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
+
+
 
         </View>
     );

@@ -5,7 +5,6 @@ import {TextInput} from 'react-native';
 import LogStore from '../repository/LogStore';
 
 
-
 const TaskScreen = () => {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
