@@ -21,21 +21,27 @@ const HomeScreen = ({navigation}) => {
             {/*</TouchableOpacity>*/}
 
             <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Words')}>
-                <Text style={styles.header}>Words</Text>
-                <Icon name={'ic_fluent_info_20_regular'} size={24} color={'white'}/>
+                <Text style={styles.header}>Изучение слов</Text>
+                <Icon name={'ic_fluent_clipboard_letter_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Completed Tasks')}>
-                <Text style={styles.header}>Completed Words</Text>
-                <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>
+            {/*<TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Completed Tasks')}>*/}
+            {/*    <Text style={styles.header}>Completed Words</Text>*/}
+            {/*    <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>*/}
+            {/*</TouchableOpacity>*/}
+
+
+
+            <TouchableOpacity style={styles.custom_button_disabled} onPress={() => navigation.navigate('AddWord')}>
+                <Text style={styles.header}>Добавить слова</Text>
+                <Icon name={'ic_fluent_add_circle_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('About')}>
-                <Text style={styles.header}>About</Text>
+                <Text style={styles.header}>О приложении</Text>
                 <Icon name={'ic_fluent_info_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
-
 
 
         </View>
@@ -65,7 +71,20 @@ const styles = StyleSheet.create({
             backgroundColor: '#5c74ff',
             padding: 3,
             height: 50,
-            width: 200,
+            width: 250,
+            fontFamily: 'Manrope',
+            gap: 8
+        },
+    custom_button_disabled:
+        {
+            flexDirection: 'row',
+
+            justifyContent: 'center',
+            borderRadius: 10,
+            backgroundColor: '#383d54',
+            padding: 3,
+            height: 50,
+            width: 250,
             fontFamily: 'Manrope',
             gap: 8
         },

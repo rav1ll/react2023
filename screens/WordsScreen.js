@@ -1,56 +1,71 @@
-import React, {useState} from 'react';
-import {View, Text,  TouchableOpacity, StyleSheet} from 'react-native';
-import wordsData from '../words/wordsdata';
+import React, {useEffect, useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
-import {Image} from 'react-native';
+import Realm from 'realm';
+import Word from '../words/Word.ts'; // Импортируем модель Word.ts
+
 
 const WordScreen = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
 
-    const goToNextWord = () => {
-        if (currentIndex < wordsData.length - 1) {
-            setCurrentIndex(currentIndex + 1);
+    const [wordsData, setWordsData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
+    const wordsPerPage = 3;
+
+    useEffect(() => {
+        const realm = new Realm({schema: [Word]});
+        const words = realm.objects('Word').filtered('level = 1');
+        setWordsData(words);
+    }, []);
+
+    const goToNextPage = () => {
+        if ((currentPage + 1) * wordsPerPage < wordsData.length) {
+            setCurrentPage(currentPage + 1);
         }
     };
 
-    const goToPreviousWord = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
+    const goToPreviousPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
         }
     };
+
+    const markAsLearned = (word) => {
+        const realm = new Realm({schema: [Word]});
+        realm.write(() => {
+            word.isLearned = !word.isLearned;
+        });
+    };
+
 
     return (
         <View style={styles.container}>
-            <View style={{alignItems: 'center', marginTop: 20, gap: 15}}>
-                <Image source={wordsData[currentIndex].image} style={{width: 300, height: 400, borderRadius: 15}}/>
-                <Text style={styles.learnword}>{wordsData[currentIndex].word}</Text>
-                <Text style={styles.translation}>{wordsData[currentIndex].translation}</Text>
-            </View>
-            <View style={styles.container}>
-
-
-                <View style={styles.row}>
-                    <TouchableOpacity
-                        onPress={goToPreviousWord}
-                        disabled={currentIndex === 0}
-                        style={[styles.button, currentIndex === 0 && styles.disabledButton]}
-                    >
-                        <Text style={[styles.buttonText, currentIndex === 0 && styles.disabledText]}>Предыдущее
-                            слово</Text>
+            {wordsData.slice(currentPage * wordsPerPage, (currentPage + 1) * wordsPerPage).map((word, index) => (
+                <View key={index} style={{alignItems: 'center', marginTop: 10}}>
+                    <Text style={styles.learnword}>{word.word}</Text>
+                    <Text style={styles.translation}>{word.translation}</Text>
+                    <TouchableOpacity onPress={() => markAsLearned(word)} style={styles.button}>
+                        <Text
+                            style={styles.buttonText}>{word.isLearned ? 'Отметить как не пройденное' : 'Отметить как пройденное'}</Text>
                     </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={goToNextWord}
-                        disabled={currentIndex === wordsData.length - 1}
-                        style={[styles.button, currentIndex === wordsData.length - 1 && styles.disabledButton]}
-                    >
-                        <Text style={[styles.buttonText, currentIndex === wordsData.length - 1 && styles.disabledText]}>Следующее
-                            слово</Text>
-                    </TouchableOpacity>
-
                 </View>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Отметить как пройденное</Text>
+            ))}
+            <View style={styles.row}>
+                <TouchableOpacity
+                    onPress={goToPreviousPage}
+                    disabled={currentPage === 0}
+                    style={[styles.button, currentPage === 0 && styles.disabledButton]}
+                >
+                    <Text style={[styles.buttonText, currentPage === 0 && styles.disabledText]}>Предыдущая
+                        страница</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={goToNextPage}
+                    disabled={(currentPage + 1) * wordsPerPage >= wordsData.length}
+                    style={[styles.button, (currentPage + 1) * wordsPerPage >= wordsData.length && styles.disabledButton]}
+                >
+                    <Text
+                        style={[styles.buttonText, (currentPage + 1) * wordsPerPage >= wordsData.length && styles.disabledText]}>Следующая
+                        страница</Text>
                 </TouchableOpacity>
             </View>
         </View>
