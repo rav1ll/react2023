@@ -1,7 +1,6 @@
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import * as React from 'react';
 import AboutScreen from './screens/AboutScreen';
-import TaskScreen from './screens/TaskScreen';
 import RequestScreen from './screens/RequestScreen';
 import HomeScreen from './screens/HomeScreen';
 import {NavigationContainer} from '@react-navigation/native' ;
@@ -27,7 +26,6 @@ const App = () => {
                     <Stack.Screen name={'Home'} component={HomeScreen}/>
                     <Stack.Screen name={'Words'} component={WordScreen}/>
                     <Stack.Screen name={'About'} component={AboutScreen}/>
-                    <Stack.Screen name={'Tasks'} component={TaskScreen}/>
                     <Stack.Screen name={'Requests'} component={RequestScreen}/>
                     <Stack.Screen name={'AddWord'} component={WordCreateScreen}/>
                     <Stack.Screen name={'Level Choose'} component={LevelChooseScreen}/>
