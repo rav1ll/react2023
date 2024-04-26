@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     },
 
     translation: {
-        fontSize: 30,
+        fontSize: 26,
         color: 'black',
         backgroundColor: '#fafafa',
         borderRadius: 12,

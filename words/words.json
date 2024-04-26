@@ -27,5 +27,25 @@
   { "english": "estimate", "translation": "оценивать", "level": 2, "isLearned": false },
   {"english": "evolve", "translation": "развиваться", "level": 2, "isLearned": false },
   { "english": "renew", "translation": "обновить", "level": 2, "isLearned": false },
-  { "english": "absorb", "translation": "поглощать", "level": 2, "isLearned": false }
+  { "english": "absorb", "translation": "поглощать", "level": 2, "isLearned": false },
+
+  { "english": "desist", "translation": "запретить", "level": 3, "isLearned": false },
+  { "english": "refine", "translation": "совершенствовать", "level": 3, "isLearned": false },
+  { "english": "violate", "translation": "нарушать", "level": 3, "isLearned": false },
+  { "english": "obey", "translation": "подчиняться", "level": 3, "isLearned": false },
+  { "english": "employ", "translation": "нанимать", "level": 3, "isLearned": false },
+  { "english": "govern", "translation": "управлять", "level": 3, "isLearned": false },
+  { "english": "disclose", "translation": "раскрывать", "level": 3, "isLearned": false },
+  { "english": "scale", "translation": "шкала", "level": 3, "isLearned": false },
+  { "english": "worksheet", "translation": "таблица", "level": 3, "isLearned": false },
+  { "english": "inquiry", "translation": "исследование", "level": 3, "isLearned": false },
+  { "english": "degree", "translation": "степерь", "level": 3, "isLearned": false },
+  { "english": "incursion", "translation": "нарушение", "level": 3, "isLearned": false },
+  { "english": "venue", "translation": "место проведения", "level": 3, "isLearned": false },
+  { "english": "transition", "translation": "переход", "level": 3, "isLearned": false },
+  { "english": "workforce", "translation": "рабочая сила", "level": 3, "isLearned": false },
+  { "english": "galore", "translation": "обилие", "level": 3, "isLearned": false }
+
+
+
 ]

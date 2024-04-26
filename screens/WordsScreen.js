@@ -43,8 +43,8 @@ const WordScreen = (route) => {
             {wordsData.slice(currentPage * wordsPerPage, (currentPage + 1) * wordsPerPage).map((word, index) => (
 
                 <View key={index} style={styles.wordcontainer}>
-                    <Text style={styles.learnword}>{word.english} 🇬🇧</Text>
-                    <Text style={styles.translation}>{word.translation} 🇷🇺</Text>
+                    <Text style={styles.learnword}> 🇬🇧 {word.english}</Text>
+                    <Text style={styles.translation}> 🇷🇺 {word.translation}</Text>
                     <TouchableOpacity onPress={() => markAsLearned(word)}
                                       style={[styles.button, !word.isLearned && styles.inactiveButton]}>
                         <Text
