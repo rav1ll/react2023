@@ -10,6 +10,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack' ;
 import {DeepLinking} from "./navigation/DeepLinking";
 import Navigation from "./base/Navigation";
 import WordCreateScreen from "./screens/WordCreateScreen";
+import LevelChooseScreen from "./screens/LevelChooseScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -29,6 +30,7 @@ const App = () => {
                     <Stack.Screen name={'Tasks'} component={TaskScreen}/>
                     <Stack.Screen name={'Requests'} component={RequestScreen}/>
                     <Stack.Screen name={'AddWord'} component={WordCreateScreen}/>
+                    <Stack.Screen name={'Level Choose'} component={LevelChooseScreen}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </GestureHandlerRootView>

@@ -1,12 +1,14 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
-const AboutScreen = ({navigation}) => {
+const AboutScreen = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>About this app</Text>
 
-            <Text style={styles.text}>this is edu project based on react native. 2023</Text>
+            <Text style={styles.text}> Project for learning english words</Text>
+
+            <Text style={styles.text}> 2024</Text>
         </View>
     );
 }
@@ -17,18 +19,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor:
-            '#071825',
+            '#f3f3f3',
     },
     text: {
-        color: 'white',
+        color: 'black',
         marginTop: 100,
-        fontSize: 12
+        fontSize: 22
     },
     header: {
         fontSize: 34,
         alignItems: 'center',
         marginBottom: 20,
-        color: 'white',
+        color: 'black',
+        borderRadius: 11,
+        backgroundColor: '#f2fed1',
+        padding: 11,
+        borderColor: 'black',
+        borderWidth: 1.2
     },
 });
 

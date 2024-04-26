@@ -20,9 +20,9 @@ const HomeScreen = ({navigation}) => {
             {/*    <Icon name={'ic_fluent_album_add_20_regular'} size={24} color={'white'}/>*/}
             {/*</TouchableOpacity>*/}
 
-            <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Words')}>
+            <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('Level Choose')}>
                 <Text style={styles.header}>Изучение слов</Text>
-                <Icon name={'ic_fluent_clipboard_letter_20_regular'} size={24} color={'white'}/>
+                <Icon name={'ic_fluent_clipboard_letter_20_regular'} size={24} color={'black'}/>
             </TouchableOpacity>
 
 
@@ -32,15 +32,14 @@ const HomeScreen = ({navigation}) => {
             {/*</TouchableOpacity>*/}
 
 
-
             <TouchableOpacity style={styles.custom_button_disabled} onPress={() => navigation.navigate('AddWord')}>
-                <Text style={styles.header}>Добавить слова</Text>
+                <Text style={styles.disabled_header}>Добавить слова</Text>
                 <Icon name={'ic_fluent_add_circle_20_regular'} size={24} color={'white'}/>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.custom_button} onPress={() => navigation.navigate('About')}>
                 <Text style={styles.header}>О приложении</Text>
-                <Icon name={'ic_fluent_info_20_regular'} size={24} color={'white'}/>
+                <Icon name={'ic_fluent_info_20_regular'} size={24} color={'black'}/>
             </TouchableOpacity>
 
 
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor:
-                '#071825',
+                '#f3f3f3',
             gap: 10,
             fontFamily: 'manrope_bold',
             fontWeight: 900
@@ -67,21 +66,24 @@ const styles = StyleSheet.create({
             flexDirection: 'row',
 
             justifyContent: 'center',
-            borderRadius: 10,
-            backgroundColor: '#5c74ff',
+            backgroundColor: '#abf600',
             padding: 3,
             height: 50,
             width: 250,
             fontFamily: 'Manrope',
-            gap: 8
+            gap: 8,
+            borderRadius: 11,
+            borderWidth: 1.2,
+            color: 'black'
         },
+
     custom_button_disabled:
         {
             flexDirection: 'row',
 
             justifyContent: 'center',
             borderRadius: 10,
-            backgroundColor: '#383d54',
+            backgroundColor: 'black',
             padding: 3,
             height: 50,
             width: 250,
@@ -89,6 +91,14 @@ const styles = StyleSheet.create({
             gap: 8
         },
     header: {
+        fontSize: 15,
+        color: 'black',
+        alignItems: 'center',
+        marginBottom: 20,
+        fontFamily: 'Manrope',
+        fontWeight: '100'
+    },
+    disabled_header: {
         fontSize: 15,
         color: 'white',
         alignItems: 'center',
